@@ -27,18 +27,18 @@ const Hero = () => {
       {/* Animated background */}
       <div className="absolute inset-0 animated-gradient opacity-20"></div>
       
-      {/* Floating elements */}
+      {/* Floating elements - 개수 줄임 */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(6)].map((_, i) => (
+        {[...Array(3)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-2 h-2 bg-white rounded-full opacity-30"
             animate={{
-              x: [0, 100, 0],
-              y: [0, -100, 0],
+              x: [0, 50, 0],
+              y: [0, -50, 0],
             }}
             transition={{
-              duration: 20 + i * 2,
+              duration: 15 + i * 2,
               repeat: Infinity,
               ease: "linear",
             }}
@@ -53,24 +53,24 @@ const Hero = () => {
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         {/* Main content */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           className="mb-8"
         >
           <motion.h1
-            initial={{ opacity: 0, scale: 0.5 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold text-white mb-6"
           >
             안녕하세요! 👋
           </motion.h1>
           
           <motion.h2
-            initial={{ opacity: 0, scale: 0.5 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-5xl font-bold gradient-text mb-4"
           >
             저는 <span className="text-white">김개발</span>입니다
@@ -79,7 +79,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             className="text-xl md:text-2xl text-blue-200 mb-8 h-8"
           >
             <span className="typewriter">{texts[currentText]}</span>
@@ -88,7 +88,7 @@ const Hero = () => {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed"
           >
             사용자 경험을 중시하며, 창의적이고 혁신적인 웹 솔루션을 만들어가는 개발자입니다.
@@ -98,9 +98,9 @@ const Hero = () => {
 
         {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
         >
           <motion.button
@@ -124,7 +124,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="flex justify-center space-x-6 mb-12"
         >
           {[
@@ -135,7 +135,7 @@ const Hero = () => {
             <motion.a
               key={social.label}
               href={social.href}
-              whileHover={{ scale: 1.2, y: -5 }}
+              whileHover={{ scale: 1.1, y: -3 }}
               whileTap={{ scale: 0.9 }}
               className="w-12 h-12 glass rounded-full flex items-center justify-center text-white hover:text-blue-300 transition-colors duration-300"
               aria-label={social.label}
@@ -149,12 +149,12 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
           <motion.button
             onClick={scrollToAbout}
-            animate={{ y: [0, 10, 0] }}
+            animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="text-white hover:text-blue-300 transition-colors duration-300"
           >

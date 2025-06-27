@@ -60,11 +60,11 @@ body {
   background-clip: text;
 }
 
-/* Animated gradient background */
+/* Animated gradient background - 최적화 */
 .animated-gradient {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 20s ease infinite;
 }
 
 @keyframes gradient {
@@ -79,9 +79,9 @@ body {
   }
 }
 
-/* Floating animation */
+/* Floating animation - 최적화 */
 .floating {
-  animation: floating 3s ease-in-out infinite;
+  animation: floating 4s ease-in-out infinite;
 }
 
 @keyframes floating {
@@ -89,16 +89,16 @@ body {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
 }
 
-/* Typewriter effect */
+/* Typewriter effect - 최적화 */
 .typewriter {
   overflow: hidden;
   border-right: 2px solid #fff;
   white-space: nowrap;
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
 @keyframes typing {
@@ -117,4 +117,9 @@ body {
   50% {
     border-color: #fff;
   }
+}
+
+/* 성능 최적화를 위한 will-change 속성 */
+.glass, .animated-gradient, .floating {
+  will-change: transform, opacity;
 } 

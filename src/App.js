@@ -13,10 +13,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time
-    setTimeout(() => {
+    // 로딩 시간을 0.5초로 단축
+    const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   if (isLoading) {
@@ -25,7 +27,7 @@ function App() {
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
           className="text-center"
         >
           <div className="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
