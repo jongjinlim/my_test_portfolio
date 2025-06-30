@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter, FaArrowDown } from 'react-icons/fa';
 
 const Hero = () => {
@@ -23,68 +24,143 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Static background instead of animated */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"></div>
+      {/* Animated background */}
+      <div className="absolute inset-0 animated-gradient opacity-20"></div>
+      
+      {/* Floating elements - 눈 내리는 효과 */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-white rounded-full opacity-30"
+            animate={{
+              x: [0, 50, 0],
+              y: [0, -50, 0],
+            }}
+            transition={{
+              duration: 15 + i * 2,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+          />
+        ))}
+      </div>
       
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Main content - minimal animations */}
-        <div className="mb-8">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+        {/* Main content */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-8"
+        >
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-5xl md:text-7xl font-bold text-white mb-6"
+          >
             안녕하세요! 👋
-          </h1>
+          </motion.h1>
           
-          <h2 className="text-3xl md:text-5xl font-bold gradient-text mb-4">
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-3xl md:text-5xl font-bold gradient-text mb-4"
+          >
             저는 <span className="text-white">김개발</span>입니다
-          </h2>
+          </motion.h2>
 
-          <div className="text-xl md:text-2xl text-blue-200 mb-8 h-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-xl md:text-2xl text-blue-200 mb-8 h-8"
+          >
             <span className="typewriter">{texts[currentText]}</span>
-          </div>
+          </motion.div>
 
-          <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed"
+          >
             사용자 경험을 중시하며, 창의적이고 혁신적인 웹 솔루션을 만들어가는 개발자입니다.
             최신 기술 트렌드를 따라가며 끊임없이 학습하고 성장하고 있습니다.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+        >
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+          >
             프로젝트 보기
-          </button>
+          </motion.button>
           
-          <button className="px-8 py-4 glass text-white font-semibold rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-4 glass text-white font-semibold rounded-full border border-white/20 hover:bg-white/10 transition-all duration-300"
+          >
             이력서 다운로드
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
 
         {/* Social Links */}
-        <div className="flex justify-center space-x-6 mb-12">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex justify-center space-x-6 mb-12"
+        >
           {[
             { icon: FaGithub, href: "#", label: "GitHub" },
             { icon: FaLinkedin, href: "#", label: "LinkedIn" },
             { icon: FaTwitter, href: "#", label: "Twitter" },
-          ].map((social) => (
-            <a
+          ].map((social, index) => (
+            <motion.a
               key={social.label}
               href={social.href}
+              whileHover={{ scale: 1.1, y: -3 }}
+              whileTap={{ scale: 0.9 }}
               className="w-12 h-12 glass rounded-full flex items-center justify-center text-white hover:text-blue-300 transition-colors duration-300"
               aria-label={social.label}
             >
               <social.icon size={20} />
-            </a>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <button
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <motion.button
             onClick={scrollToAbout}
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
             className="text-white hover:text-blue-300 transition-colors duration-300"
           >
             <FaArrowDown size={24} />
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

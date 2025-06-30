@@ -60,7 +60,7 @@ body {
   background-clip: text;
 }
 
-/* Animated gradient background - 최적화 */
+/* Animated gradient background */
 .animated-gradient {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
@@ -79,7 +79,7 @@ body {
   }
 }
 
-/* Floating animation - 최적화 */
+/* Floating animation */
 .floating {
   animation: floating 4s ease-in-out infinite;
 }
@@ -93,17 +93,31 @@ body {
   }
 }
 
-/* Typewriter effect - 최적화 */
+/* Typewriter effect with cursor */
 .typewriter {
   display: inline-block;
   overflow: hidden;
+  border-right: 2px solid #fff;
   white-space: nowrap;
-  animation: typing 2s steps(40, end);
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
 @keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fff;
+  }
 }
 
 /* 성능 최적화를 위한 will-change 속성 */
@@ -139,5 +153,6 @@ html {
 @media (max-width: 768px) {
   .typewriter {
     animation: none;
+    border-right: none;
   }
 } 
