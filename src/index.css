@@ -64,7 +64,7 @@ body {
 .animated-gradient {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
-  animation: gradient 20s ease infinite;
+  animation: gradient 15s ease infinite;
 }
 
 @keyframes gradient {
@@ -95,31 +95,49 @@ body {
 
 /* Typewriter effect - 최적화 */
 .typewriter {
+  display: inline-block;
   overflow: hidden;
-  border-right: 2px solid #fff;
   white-space: nowrap;
-  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation: typing 2s steps(40, end);
 }
 
 @keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes blink-caret {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: #fff;
-  }
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 /* 성능 최적화를 위한 will-change 속성 */
 .glass, .animated-gradient, .floating {
   will-change: transform, opacity;
+}
+
+/* Custom styles */
+@layer components {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent;
+  }
+  
+  .section-padding {
+    @apply py-20 px-4;
+  }
+  
+  .container-width {
+    @apply max-w-6xl mx-auto;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize for mobile */
+@media (max-width: 768px) {
+  .typewriter {
+    animation: none;
+  }
 } 

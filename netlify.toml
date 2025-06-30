@@ -7,6 +7,7 @@
   CI = "false"
   GENERATE_SOURCEMAP = "false"
 
+# SPA routing - 모든 경로를 index.html로 리디렉션
 [[redirects]]
   from = "/*"
   to = "/index.html"

@@ -20,9 +20,9 @@
 
 #### 방법 B: GitHub 연동 (자동 배포)
 1. GitHub에 프로젝트 업로드
-2. Netlify에서 "New site from Git" 클릭
+2. Netlify에서 "New site from Git" 클릭 
 3. GitHub 선택 후 저장소 연결
-4. 빌드 설정:
+4. 빌드 설정: 
    - Build command: `npm run build`
    - Publish directory: `build`
 5. "Deploy site" 클릭
